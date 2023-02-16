@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Maksim Opriatin](https://up.htmlacademy.ru/javascript/28/user/1880253).
-* Наставник: `Неизвестно`.
+* Наставник: `Roman Zheltov`.
 
 ---
 
