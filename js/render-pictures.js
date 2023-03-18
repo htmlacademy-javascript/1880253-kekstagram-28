@@ -1,13 +1,11 @@
 import { createPhotoArray } from './data.js';
 
-// createPhotoArray();
-
 const allPictures = document.querySelector('.pictures');
-
-document.querySelector('.pictures').querySelector('.pictures__title').classList.remove('visually-hidden');
+if (allPictures) {
+  allPictures.querySelector('.pictures__title').classList.remove('visually-hidden');
+}
 
 const pictureTemplate = document.querySelector('#picture').content.cloneNode(true);
-
 const pictureFragment = document.createDocumentFragment();
 
 const photoArray = createPhotoArray();
@@ -22,8 +20,9 @@ const placePictures = function (photos) {
     pictureFragment.append(newPictureTemplate);
 
   });
-
-  allPictures.append(pictureFragment);
+  if (allPictures) {
+    allPictures.append(pictureFragment);
+  }
 };
 
 export { placePictures, photoArray };
