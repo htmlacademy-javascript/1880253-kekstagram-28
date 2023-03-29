@@ -38,5 +38,6 @@ function createRandomIdFromRangeGenerator(min, max) {
   };
 }
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export { generateId, generatePhotoId, createRandomIdFromRangeGenerator, getRandomInteger };
+export { generateId, generatePhotoId, createRandomIdFromRangeGenerator, getRandomInteger, isEscapeKey };
