@@ -1,7 +1,9 @@
 import { createPhotoArray } from './data.js';
-import { openPicturePopup, closePicturePopup } from './open-popup.js';
+import { openPicturePopup, closePicturePopup, closeBigPicture } from './open-popup.js';
 import { renderBigPictureInfo } from './render-comments.js';
+import { hideComments } from './comments-check.js';
 
+const COMMENTS_TO_SHOW = 5;
 const allPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.cloneNode(true);
 const pictureFragment = document.createDocumentFragment();
@@ -26,10 +28,12 @@ const placePictures = function (photos) {
         evt.preventDefault();
         openPicturePopup();
         renderBigPictureInfo(photos[i]);
+        hideComments();
       });
     }
-    closePicturePopup();
+
+    closePicturePopup(closeBigPicture);
   }
 };
 
-export { placePictures, photoArray };
+export { placePictures, photoArray, COMMENTS_TO_SHOW };

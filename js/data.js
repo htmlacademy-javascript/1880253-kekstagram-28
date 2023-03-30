@@ -3,8 +3,8 @@ import { generateId, generatePhotoId, createRandomIdFromRangeGenerator, getRando
 const OBJECTS_TO_GENERATE = 25;
 const MIN_LIKES_AMOUNT = 15;
 const MAX_LIKES_AMOUNT = 200;
-const MIN_COMMENTS_AMOUNT = 1;
-const MAX_COMMENTS_AMOUNT = 2;
+const MIN_COMMENTS_AMOUNT = 2;
+const MAX_COMMENTS_AMOUNT = 12;
 const MIN_AVATAR_NUMBER = 1;
 const MAX_AVATAR_NUMBER = 6;
 const MIN_COMMENT_ID = 1;
