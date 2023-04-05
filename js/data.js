@@ -9,6 +9,8 @@ const MIN_AVATAR_NUMBER = 1;
 const MAX_AVATAR_NUMBER = 6;
 const MIN_COMMENT_ID = 1;
 const MAX_COMMENT_ID = 6;
+const MAX_COMMENT_LENGTH = 140;
+const MAX_HASHTAGS_AMOUNT = 5;
 
 const DESCRIPTIONS = [
   'Это мы',
@@ -61,4 +63,4 @@ const createPhoto = () => ({
 
 const createPhotoArray = () => Array.from({ length: OBJECTS_TO_GENERATE }, createPhoto);
 
-export { createPhotoArray };
+export { createPhotoArray, MAX_COMMENT_LENGTH, MAX_HASHTAGS_AMOUNT };
