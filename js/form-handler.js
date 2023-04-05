@@ -1,5 +1,4 @@
 import { isEscapeKey } from './util.js';
-// import './validation.js';
 import { hashtagInput, commentInput } from './validation.js';
 
 const imageToChange = document.querySelector('.img-upload__preview img');
@@ -30,8 +29,7 @@ const closeEditor = function (item) {
   });
 };
 
-
-uploadImageInput.addEventListener('change', () => {
+const changeImageToEdit = () => {
   overlay.classList.remove('hidden');
   fileHandler.onload = function () {
     document.querySelector('body').classList.add('modal-open');
@@ -40,4 +38,8 @@ uploadImageInput.addEventListener('change', () => {
   };
   fileHandler.readAsDataURL(uploadImageInput.files[0]);
   closeEditor(closeEditorButton);
-});
+};
+
+uploadImageInput.addEventListener('change', changeImageToEdit);
+
+export { imageToChange };
