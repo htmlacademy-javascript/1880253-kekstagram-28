@@ -1,25 +1,23 @@
-// import '../vendor/pristine/pristine.min.js';
-import { MAX_COMMENT_LENGTH, MAX_HASHTAGS_AMOUNT } from './data.js';
+import { MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH, MAX_HASHTAGS_AMOUNT } from './data.js';
 
 const form = document.querySelector('.img-upload__form');
 const commentInput = form.querySelector('.text__description');
 const textContent = document.querySelector('.img-upload__text');
 const hashtagInput = textContent.querySelector('.text__hashtags');
 
-const pristine = new Pristine(form, {
+
+const pristineSettings = {
   classTo: 'img-upload__field-wrapper',
   errorClass: 'img-upload__field-wrapper--error',
   successClass: 'img-upload__field-wrapper--success',
   errorTextParent: 'img-upload__field-wrapper',
   errorTextTag: 'div',
   errorTextClass: 'pristine-error',
-});
-
-const validateComment = (value) => {
-  const min = 0;
-  const max = 140;
-  return value.length >= min && value.length <= max;
 };
+
+const pristine = new Pristine(form, pristineSettings);
+
+const validateComment = (value) => value.length >= MIN_COMMENT_LENGTH && value.length <= MAX_COMMENT_LENGTH;
 
 
 const getCommentErrorMessage = () => {
@@ -31,7 +29,7 @@ pristine.addValidator(commentInput, validateComment, getCommentErrorMessage);
 
 const isValidHashtag = (item) => {
   let result = true;
-  if (item === '') {
+  if (!item) {
     return result;
   }
   const hashtagRegEx = /^#[a-zа-яё0-9]{1,19}$/i;
@@ -77,4 +75,4 @@ form.addEventListener('submit', (evt) => {
   }
 });
 
-export { commentInput, hashtagInput };
+export { commentInput, hashtagInput, form };
