@@ -33,6 +33,8 @@ const placePictures = function (photos) {
     }
 
     closePicturePopup(closeBigPicture);
+
+    document.querySelector('.pictures__title').classList.remove('visually-hidden');
   }
 };
 

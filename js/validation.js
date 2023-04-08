@@ -1,10 +1,15 @@
 import { MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH, MAX_HASHTAGS_AMOUNT } from './data.js';
+import { showAlert } from './util.js';
+import { sendData } from './api.js';
 
 const form = document.querySelector('.img-upload__form');
 const commentInput = form.querySelector('.text__description');
 const textContent = document.querySelector('.img-upload__text');
 const hashtagInput = textContent.querySelector('.text__hashtags');
 
+const clearFields = () => {
+  form.reset();
+};
 
 const pristineSettings = {
   classTo: 'img-upload__field-wrapper',
@@ -68,11 +73,38 @@ const isOversize = (item) => {
 
 pristine.addValidator(hashtagInput, isOversize, `Максимальное количество хэштегов - ${MAX_HASHTAGS_AMOUNT}`);
 
+const SubmitButtonText = {
+  IDLE: 'Отправить',
+  SENDING: 'Отправляю',
+};
 
-form.addEventListener('submit', (evt) => {
-  if (!pristine.validate()) {
+const submitButton = form.querySelector('.img-upload__submit');
+
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = SubmitButtonText.SENDING;
+};
+
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = SubmitButtonText.IDLE;
+};
+
+const setUserFormSubmit = (onSuccess) => {
+  form.addEventListener('submit', (evt) => {
     evt.preventDefault();
-  }
-});
+    const isValid = pristine.validate();
 
-export { commentInput, hashtagInput, form };
+    if (isValid) {
+      blockSubmitButton();
+      sendData(new FormData(evt.target))
+        .then(onSuccess)
+        .catch((err) => {
+          showAlert(err.message);
+        })
+        .finally(unblockSubmitButton);
+    }
+  });
+};
+
+export { commentInput, hashtagInput, form, setUserFormSubmit, clearFields };
