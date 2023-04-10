@@ -30,7 +30,7 @@ const onOverlayKeydown = (evt) => {
 };
 
 
-const closeEditor = function (item) {
+const closeEditor = (item) => {
   item.addEventListener('click', () => {
     overlay.classList.add('hidden');
     document.querySelector('body').classList.remove('modal-open');

@@ -42,50 +42,6 @@ function createRandomIdFromRangeGenerator(min, max) {
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-// const showAlert = (message) => {
-//   const alertContainer = document.createElement('div');
-//   alertContainer.style.zIndex = 100;
-//   alertContainer.style.position = 'absolute';
-//   alertContainer.style.left = 0;
-//   alertContainer.style.right = 0;
-//   alertContainer.style.top = 0;
-//   alertContainer.style.padding = '10px 3px';
-//   alertContainer.style.fontSize = '22px';
-//   alertContainer.style.lineHeight = '36px';
-//   alertContainer.style.textAlign = 'center';
-//   alertContainer.style.backgroundColor = 'red';
-
-//   alertContainer.textContent = message;
-
-//   document.body.append(alertContainer);
-
-//   setTimeout(() => {
-//     alertContainer.remove();
-//   }, ALERT_SHOW_TIME);
-// };
-
-// const showSuccessAlert = (message) => {
-//   const alertContainer = document.createElement('div');
-//   alertContainer.style.zIndex = 100;
-//   alertContainer.style.position = 'absolute';
-//   alertContainer.style.left = 0;
-//   alertContainer.style.right = 0;
-//   alertContainer.style.top = 0;
-//   alertContainer.style.padding = '10px 3px';
-//   alertContainer.style.fontSize = '22px';
-//   alertContainer.style.lineHeight = '36px';
-//   alertContainer.style.textAlign = 'center';
-//   alertContainer.style.backgroundColor = 'Green';
-
-//   alertContainer.textContent = message;
-
-//   document.body.append(alertContainer);
-
-//   setTimeout(() => {
-//     alertContainer.remove();
-//   }, ALERT_SHOW_TIME);
-// };
-
 const alertStyles = {
   zIndex: 100,
   position: 'absolute',
@@ -121,4 +77,16 @@ const showSuccessAlert = (message) => {
   createAlert(message, 'green');
 };
 
-export { generateId, generatePhotoId, createRandomIdFromRangeGenerator, getRandomInteger, isEscapeKey, showAlert, showSuccessAlert };
+// Для фильтра
+const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
+
+const copyArray = (array) => array.slice();
+
+const removeArrayElement = (array, value) => array.filter((element) => element !== value);
+
+const removeElementsFromContainer = (containerSelector, elementSelector) => {
+  const elements = containerSelector.querySelectorAll(elementSelector);
+  elements.forEach((element) => element.remove());
+};
+
+export { generateId, generatePhotoId, createRandomIdFromRangeGenerator, getRandomInteger, isEscapeKey, showAlert, showSuccessAlert, shuffleArray, copyArray, removeArrayElement, removeElementsFromContainer };

@@ -3,15 +3,15 @@ const isValidLength = (initString, characters = 18) => initString.length >= char
 isValidLength('проверяемая строк', 18);
 
 // Функция проверки на палиндром
-function isPalindrom(initString) {
+const isPalindrom = (initString) => {
   const tempString = initString.toLowerCase().replaceAll(' ', '');
   return tempString === tempString.split('').reverse().join('');
-}
+};
 
 isPalindrom('Лёша на полке клопа нашёл ');
 
 // Функция, извлекающая цифры из строки
-function genNumber(initString) {
+const genNumber = (initString) => {
   const convertToString = String(initString);
   let result = '';
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -26,12 +26,12 @@ function genNumber(initString) {
     return NaN;
   }
   return Number(result);
-}
+};
 
 genNumber(1.5);
 
 // Функция с тремя параметрами
-function modifyString(string, reqLength, symbols) {
+const modifyString = (string, reqLength, symbols) => {
   symbols = String(symbols);
   let result;
   if (string.length >= reqLength) {
@@ -57,5 +57,6 @@ function modifyString(string, reqLength, symbols) {
   }
 
   return result;
-}
+};
+
 modifyString('qwerty', 4, '0');
