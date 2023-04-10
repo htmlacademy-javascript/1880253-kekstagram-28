@@ -16,6 +16,14 @@ const clearClasses = () => {
   imageToChange.classList.remove('effects__preview--heat');
 };
 
+const resetImage = () => {
+  effectLevel.classList.add('hidden');
+  clearClasses();
+  imageToChange.style.filter = 'none';
+  document.querySelector('#effect-none').click();
+};
+
+
 const chromeEffect = document.querySelector('#effect-chrome');
 
 chromeEffect.addEventListener('change', (evt) => {
@@ -169,8 +177,10 @@ effectNone.addEventListener('change', (evt) => {
       sliderElement.noUiSlider.destroy();
     }
 
-    effectLevel.classList.add('hidden');
-    clearClasses();
-    imageToChange.style.filter = 'none';
+    resetImage();
   }
 });
+
+export { resetImage };
+
+

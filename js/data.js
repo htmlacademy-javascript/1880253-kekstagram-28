@@ -15,6 +15,7 @@ const MIN_SCALE = 25;
 const MAX_SCALE = 100;
 const MIN_COMMENT_LENGTH = 0;
 const MAX_COMMENT_LENGTH = 140;
+const ALERT_SHOW_TIME = 5000;
 
 const DESCRIPTIONS = [
   'Это мы',
@@ -67,4 +68,4 @@ const createPhoto = () => ({
 
 const createPhotoArray = () => Array.from({ length: OBJECTS_TO_GENERATE }, createPhoto);
 
-export { createPhotoArray, MAX_HASHTAGS_AMOUNT, SCALE_STEP, MIN_SCALE, MAX_SCALE, MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH };
+export { createPhotoArray, MAX_HASHTAGS_AMOUNT, SCALE_STEP, MIN_SCALE, MAX_SCALE, MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH, ALERT_SHOW_TIME };

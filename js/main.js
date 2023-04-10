@@ -1,8 +1,17 @@
-import { placePictures, photoArray } from './render-pictures.js';
+import { placePictures } from './render-pictures.js';
+import { closeAndResetForm } from './form-handler.js';
 import './form-handler.js';
 import './image-manipulation.js';
 import './no-ui-slider.js';
+import { setUserFormSubmit } from './validation.js';
+import { getData } from './api.js';
+import { showAlert } from './util.js';
 
-document.querySelector('.pictures__title').classList.remove('visually-hidden');
+getData()
+  .then((posts) => {
+    placePictures(posts);
+  }).catch((err) => {
+    showAlert(err.message);
+  });
 
-placePictures(photoArray);
+setUserFormSubmit(closeAndResetForm);

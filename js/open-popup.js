@@ -23,7 +23,6 @@ const openPicturePopup = function () {
   bigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
   document.addEventListener('keydown', onDocumentKeydown);
-
 };
 
 export { openPicturePopup, closePicturePopup, bigPicture, closeBigPicture };
