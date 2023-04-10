@@ -58,7 +58,6 @@ const closeAndResetForm = () => {
   document.querySelector('body').classList.remove('modal-open');
   document.removeEventListener('keydown', onOverlayKeydown);
   document.querySelector('.img-upload__overlay').classList.add('hidden');
-  showSuccessAlert('Изображение отправлено');
   uploadImageInput.value = '';
   resetImage();
   resetImageSize();
