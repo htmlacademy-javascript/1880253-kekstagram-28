@@ -10,7 +10,6 @@ const uploadImageInput = document.querySelector('#upload-file');
 const overlay = document.querySelector('.img-upload__overlay');
 const closeEditorButton = document.querySelector('.img-upload__cancel');
 const scaleControl = document.querySelector('.scale__control--value');
-
 const fieldInFocus = () => document.activeElement === hashtagInput || document.activeElement === commentInput;
 
 const resetImageSize = () => {
@@ -30,7 +29,7 @@ const onOverlayKeydown = (evt) => {
 };
 
 
-const closeEditor = function (item) {
+const closeEditor = (item) => {
   item.addEventListener('click', () => {
     overlay.classList.add('hidden');
     document.querySelector('body').classList.remove('modal-open');

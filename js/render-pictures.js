@@ -1,4 +1,4 @@
-import { createPhotoArray } from './data.js';
+
 import { openPicturePopup, closePicturePopup, closeBigPicture } from './open-popup.js';
 import { renderBigPictureInfo } from './render-comments.js';
 import { hideComments } from './comments-check.js';
@@ -7,8 +7,6 @@ const COMMENTS_TO_SHOW = 5;
 const allPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.cloneNode(true);
 const pictureFragment = document.createDocumentFragment();
-
-const photoArray = createPhotoArray();
 
 const placePictures = function (photos) {
   photos.forEach(({ url, likes, description, comments }) => {
@@ -38,4 +36,4 @@ const placePictures = function (photos) {
   }
 };
 
-export { placePictures, photoArray, COMMENTS_TO_SHOW };
+export { placePictures, COMMENTS_TO_SHOW };

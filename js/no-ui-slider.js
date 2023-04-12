@@ -4,6 +4,14 @@ const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
 const effectLevel = document.querySelector('.img-upload__effect-level');
 
+// Эффекты
+const chromeEffect = document.querySelector('#effect-chrome');
+const sepiaEffect = document.querySelector('#effect-sepia');
+const marvinEffect = document.querySelector('#effect-marvin');
+const phobosEffect = document.querySelector('#effect-phobos');
+const heatEffect = document.querySelector('#effect-heat');
+const effectNone = document.querySelector('#effect-none');
+
 effectLevel.classList.add('hidden');
 
 valueElement.value = 1;
@@ -22,9 +30,6 @@ const resetImage = () => {
   imageToChange.style.filter = 'none';
   document.querySelector('#effect-none').click();
 };
-
-
-const chromeEffect = document.querySelector('#effect-chrome');
 
 chromeEffect.addEventListener('change', (evt) => {
   if (evt.target.checked) {
@@ -53,8 +58,6 @@ chromeEffect.addEventListener('change', (evt) => {
   }
 });
 
-const sepiaEffect = document.querySelector('#effect-sepia');
-
 sepiaEffect.addEventListener('change', (evt) => {
   if (evt.target.checked) {
     if (sliderElement.noUiSlider) {
@@ -81,8 +84,6 @@ sepiaEffect.addEventListener('change', (evt) => {
     });
   }
 });
-
-const marvinEffect = document.querySelector('#effect-marvin');
 
 marvinEffect.addEventListener('change', (evt) => {
   if (evt.target.checked) {
@@ -111,8 +112,6 @@ marvinEffect.addEventListener('change', (evt) => {
   }
 });
 
-const phobosEffect = document.querySelector('#effect-phobos');
-
 phobosEffect.addEventListener('change', (evt) => {
   if (evt.target.checked) {
     if (sliderElement.noUiSlider) {
@@ -139,8 +138,6 @@ phobosEffect.addEventListener('change', (evt) => {
     });
   }
 });
-
-const heatEffect = document.querySelector('#effect-heat');
 
 heatEffect.addEventListener('change', (evt) => {
   if (evt.target.checked) {
@@ -169,8 +166,6 @@ heatEffect.addEventListener('change', (evt) => {
   }
 });
 
-const effectNone = document.querySelector('#effect-none');
-
 effectNone.addEventListener('change', (evt) => {
   if (evt.target.checked) {
     if (sliderElement.noUiSlider) {
@@ -182,5 +177,3 @@ effectNone.addEventListener('change', (evt) => {
 });
 
 export { resetImage };
-
-

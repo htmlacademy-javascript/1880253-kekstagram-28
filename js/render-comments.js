@@ -22,6 +22,7 @@ const createCommentsInPopup = (array) => {
 
 const renderBigPictureInfo = (object) => {
   bigPicture.querySelector('.big-picture__img>img').src = object.url;
+  bigPicture.querySelector('.social__caption').textContent = object.description;
   bigPicture.querySelector('.likes-count').textContent = object.likes;
   bigPicture.querySelector('.comments-count').textContent = object.comments.length;
   createCommentsInPopup(object.comments);
