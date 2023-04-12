@@ -10,7 +10,6 @@ const uploadImageInput = document.querySelector('#upload-file');
 const overlay = document.querySelector('.img-upload__overlay');
 const closeEditorButton = document.querySelector('.img-upload__cancel');
 const scaleControl = document.querySelector('.scale__control--value');
-
 const fieldInFocus = () => document.activeElement === hashtagInput || document.activeElement === commentInput;
 
 const resetImageSize = () => {

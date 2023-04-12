@@ -1,5 +1,4 @@
 import { closeAndResetForm } from './form-handler.js';
-import './form-handler.js';
 import './image-manipulation.js';
 import './no-ui-slider.js';
 import { setUserFormSubmit } from './validation.js';
