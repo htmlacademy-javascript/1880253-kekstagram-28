@@ -171,7 +171,6 @@ effectNone.addEventListener('change', (evt) => {
     if (sliderElement.noUiSlider) {
       sliderElement.noUiSlider.destroy();
     }
-
     resetImage();
   }
 });
