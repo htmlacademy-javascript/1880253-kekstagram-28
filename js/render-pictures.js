@@ -1,14 +1,14 @@
 
 import { openPicturePopup, closePicturePopup, closeBigPicture } from './open-popup.js';
 import { renderBigPictureInfo } from './render-comments.js';
-import { hideComments } from './comments-check.js';
+import { hideComments, loadMoreButtonReset } from './comments-check.js';
 
 const COMMENTS_TO_SHOW = 5;
 const allPictures = document.querySelector('.pictures');
 const pictureTemplate = document.querySelector('#picture').content.cloneNode(true);
 const pictureFragment = document.createDocumentFragment();
 
-const placePictures = function (photos) {
+const placePictures = (photos) => {
   photos.forEach(({ url, likes, description, comments }) => {
     const newPictureTemplate = pictureTemplate.cloneNode(true);
     newPictureTemplate.querySelector('.picture__img').src = url;
@@ -26,13 +26,11 @@ const placePictures = function (photos) {
         evt.preventDefault();
         openPicturePopup();
         renderBigPictureInfo(photos[i]);
+        loadMoreButtonReset();
         hideComments();
       });
     }
-
     closePicturePopup(closeBigPicture);
-
-    document.querySelector('.pictures__title').classList.remove('visually-hidden');
   }
 };
 

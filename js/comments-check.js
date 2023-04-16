@@ -8,6 +8,10 @@ const showCommentsCount = () => {
   document.querySelector('.social__comment-count').innerHTML = `${currentCommentsCount} из <span class="comments-count">${document.querySelectorAll('.social__comment').length}</span> комментариев`;
 };
 
+const loadMoreButtonReset = () => {
+  loadMoreButton.classList.remove('hidden');
+};
+
 const hideComments = () => {
   const allComments = document.querySelectorAll('.social__comment');
 
@@ -41,4 +45,4 @@ loadMoreButton.addEventListener('click', () => {
   showCommentsCount();
 });
 
-export { hideComments, loadMoreButton };
+export { hideComments, loadMoreButton, loadMoreButtonReset };

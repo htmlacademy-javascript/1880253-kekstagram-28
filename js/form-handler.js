@@ -1,6 +1,6 @@
 import { isEscapeKey } from './util.js';
 import { hashtagInput, commentInput } from './validation.js';
-import { showSuccessAlert } from './util.js';
+import { showFullSuccessAlert, successMessageBtn, closeMessageHandler } from './util.js';
 import { resetImage } from './no-ui-slider.js';
 import { clearFields } from './validation.js';
 
@@ -61,7 +61,8 @@ const closeAndResetForm = () => {
   resetImage();
   resetImageSize();
   clearFields();
-  showSuccessAlert('Фотография успешно отправлена');
+  showFullSuccessAlert();
+  closeMessageHandler(successMessageBtn);
 };
 
 uploadImageInput.addEventListener('change', changeImageToEdit);

@@ -1,4 +1,4 @@
-import { shuffleArray, copyArray, removeArrayElement, removeElementsFromContainer } from './util.js';
+import { shuffleArray, copyArray, removeElementsFromContainer } from './util.js';
 import { placePictures } from './render-pictures.js';
 import { debounce } from './debounce.js';
 
@@ -11,30 +11,7 @@ const removePictures = () => {
   removeElementsFromContainer(picturesContainer, '.picture');
 };
 
-const filterRandom = (photos, count = PICTURES_TO_SHOW) => {
-  const shuffledPhotos = shuffleArray(copyArray(photos));
-  let uniqueLinks = shuffledPhotos.reduce((acc, photo) => {
-    if (acc.includes(photo.url)) {
-      return acc;
-    }
-    return [...acc, photo.url];
-  }, []);
-
-  const uniquePhotosCount = uniqueLinks.length >= count ? count : uniqueLinks.length;
-  const uniquePhotos = [];
-
-  for (let i = 0; i < uniquePhotosCount; i++) {
-    const link = shuffledPhotos[i].url;
-
-    if (uniqueLinks.includes(link)) {
-      uniquePhotos.push(shuffledPhotos[i]);
-      uniqueLinks = removeArrayElement(uniqueLinks, link);
-    } else {
-      i--;
-    }
-  }
-  return uniquePhotos;
-};
+const filterRandom = (photos, count = PICTURES_TO_SHOW) => shuffleArray(copyArray(photos)).slice(0, count);
 
 const filterDiscussed = (photos) => copyArray(photos).sort((a, b) => b.comments.length - a.comments.length);
 

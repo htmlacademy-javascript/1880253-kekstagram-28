@@ -1,11 +1,14 @@
 import { MIN_COMMENT_LENGTH, MAX_COMMENT_LENGTH, MAX_HASHTAGS_AMOUNT } from './data.js';
-import { showAlert } from './util.js';
+import { showFullErrorMessage, errorMessageBtn, closeMessageHandler } from './util.js';
 import { sendData } from './api.js';
 
 const form = document.querySelector('.img-upload__form');
 const commentInput = form.querySelector('.text__description');
 const textContent = document.querySelector('.img-upload__text');
 const hashtagInput = textContent.querySelector('.text__hashtags');
+const hashtagIsInvalidMessage = 'Хештег невалиден';
+const hashtagIsDublicateMessage = 'Дубликаты запрещены';
+const hashtagIsOversizeMessage = `Максимальное количество хэштегов - ${MAX_HASHTAGS_AMOUNT}`;
 
 const clearFields = () => {
   form.reset();
@@ -47,10 +50,10 @@ const isValidHashtag = (item) => {
   return result;
 };
 
-pristine.addValidator(hashtagInput, isValidHashtag, 'Хештег невалиден');
+pristine.addValidator(hashtagInput, isValidHashtag, hashtagIsInvalidMessage);
 
 const isDublicate = (item) => {
-  item.toLowerCase();
+  item = item.toLowerCase();
   const arrayOfHashtags = item.split(' ');
   let result = true;
   const setOfHashtags = new Set(arrayOfHashtags);
@@ -60,7 +63,7 @@ const isDublicate = (item) => {
   return result;
 };
 
-pristine.addValidator(hashtagInput, isDublicate, 'Дубликаты запрещены');
+pristine.addValidator(hashtagInput, isDublicate, hashtagIsDublicateMessage);
 
 const isOversize = (item) => {
   const arrayOfHashtags = item.split(' ');
@@ -71,7 +74,7 @@ const isOversize = (item) => {
   return result;
 };
 
-pristine.addValidator(hashtagInput, isOversize, `Максимальное количество хэштегов - ${MAX_HASHTAGS_AMOUNT}`);
+pristine.addValidator(hashtagInput, isOversize, hashtagIsOversizeMessage);
 
 const SubmitButtonText = {
   IDLE: 'Отправить',
@@ -99,8 +102,9 @@ const setUserFormSubmit = (onSuccess) => {
       blockSubmitButton();
       sendData(new FormData(evt.target))
         .then(onSuccess)
-        .catch((err) => {
-          showAlert(err.message);
+        .catch(() => {
+          showFullErrorMessage();
+          closeMessageHandler(errorMessageBtn);
         })
         .finally(unblockSubmitButton);
     }
