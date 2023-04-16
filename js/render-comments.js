@@ -2,7 +2,6 @@ import { bigPicture } from './open-popup.js';
 
 const commentsContainer = document.querySelector('.social__comments');
 
-// Новая генерация
 const removeNodeChilds = (node) => {
   while (node.firstChild) {
     node.removeChild(node.firstChild);
