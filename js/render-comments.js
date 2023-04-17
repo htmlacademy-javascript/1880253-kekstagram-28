@@ -2,10 +2,6 @@ import { bigPicture } from './open-popup.js';
 
 const commentsContainer = document.querySelector('.social__comments');
 
-<<<<<<< HEAD
-=======
-// Новая генерация
->>>>>>> 0e1a1b109032e8dc7f7b5dce2a9f01f395864fd8
 const removeNodeChilds = (node) => {
   while (node.firstChild) {
     node.removeChild(node.firstChild);
@@ -56,3 +52,4 @@ const renderBigPictureInfo = (object) => {
 };
 
 export { renderBigPictureInfo };
+
