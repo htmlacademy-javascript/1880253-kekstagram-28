@@ -1,5 +1,3 @@
-// import { showAlert } from './util.js';
-import { showFullErrorMessage, closeMessageHandler, errorMessageBtn } from './util.js';
 import { BASE_URL, Route, Method, ErrorText } from './api-data.js';
 
 const load = (route, errorText, method = Method.GET, body = null) => fetch(
@@ -11,8 +9,7 @@ const load = (route, errorText, method = Method.GET, body = null) => fetch(
     return response.json();
   })
   .catch(() => {
-    showFullErrorMessage();
-    closeMessageHandler(errorMessageBtn);
+    throw new Error(errorText);
   });
 
 const getData = () => load(Route.GET_DATA, ErrorText.GET_DATA);
