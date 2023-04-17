@@ -2,7 +2,7 @@ import { isEscapeKey } from './util.js';
 import { hashtagInput, commentInput } from './validation.js';
 import { showFullSuccessAlert, successMessageBtn, closeMessageHandler } from './util.js';
 import { resetImage } from './no-ui-slider.js';
-import { clearFields } from './validation.js';
+import { clearFields, pristine } from './validation.js';
 
 const imageToChange = document.querySelector('.img-upload__preview img');
 const fileHandler = new FileReader();
@@ -61,6 +61,7 @@ const closeAndResetForm = () => {
   resetImage();
   resetImageSize();
   clearFields();
+  pristine.reset();
   showFullSuccessAlert();
   closeMessageHandler(successMessageBtn);
 };
