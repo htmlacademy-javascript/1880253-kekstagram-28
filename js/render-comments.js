@@ -52,3 +52,4 @@ const renderBigPictureInfo = (object) => {
 };
 
 export { renderBigPictureInfo };
+

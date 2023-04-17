@@ -111,4 +111,4 @@ const setUserFormSubmit = (onSuccess) => {
   });
 };
 
-export { commentInput, hashtagInput, form, setUserFormSubmit, clearFields };
+export { commentInput, hashtagInput, form, setUserFormSubmit, clearFields, pristine };
